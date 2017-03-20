@@ -154,6 +154,22 @@ class App extends Component {
             console.log( 'Failed fetching picture: ', error )
         }
 
+         var request = require('request-promise');
+
+        var options = {
+            headers: { 'X-Auth-Token': '5261a73875a54d87b484355026b7987'},
+            url : 'http://api.football-data.org/v1:competitions/?season=2015',
+
+            dataType: 'json',
+            type: 'GET', //PUT, POST, DELETE
+        };
+
+        request.get(options).then(function(body) {
+            var json = JSON.parse(body);
+
+            console.log(json);
+        });
+
         return weather
     }
 
